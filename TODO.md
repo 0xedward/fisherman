@@ -1,0 +1,24 @@
+# TODO
+- Implement requeuing after user has been rate limited from an API
+- [ ] Check email address to see if the email address has a chance of being compromised on the following services:
+    - [ ] WeLeakInfo 
+    - [ ] HaveIBeenPwned
+    - [ ] snusbase
+    - [ ] leak-lookup
+    - [ ] DeHashed
+- [ ] Implement checking if the email is valid inbox with:
+    - [ ] Hunter Verify
+    - [ ] Mailgun
+- [ ] Implement ability to accept API keys for the following services:
+    - [ ] EmailRep
+    - [ ] Apility
+- [ ] Implement domain reputation check with the following services:
+    - [ ] SenderScore
+        - https://www.senderscore.org/lookup.php?lookup={domain}&validLookup=true
+        - api.returnpath.com/v2
+    - [ ] ReputationAuthority
+        - http://www.reputationauthority.org/domain_lookup.php?ip={domain}
+    - [ ] Barracuda
+        - http://www.barracudacentral.org/lookups
+    - [ ] Cisco Talos
+        - https://talosintelligence.com/reputation_center/lookup?search={domain}
