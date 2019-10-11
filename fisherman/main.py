@@ -21,62 +21,27 @@ def main():
     args = parser.parse_args()
 
     if not validators.email(args.email):
-        colors.print_pink("Error: {} is not in a valid email address format".format(args.email))
+        colors.print_gray("Error: {} is not a valid email address format".format(args.email))
         sys.exit()
-
-    banner()
 
     if args.verbose:
         colors.print_gray("Verbose mode activated")
 
-    emailrep.check_email_rep(args.email, args.verbose)
-    apility.check_email_rep(args.email, args.verbose)
+    emailrep_result = emailrep.issuspicious(args.email, args.verbose)
+    if emailrep_result is None:
+        colors.print_yellow("EmailRep does not have information the email at this time.")
+    elif emailrep_result:
+        colors.print_red("EmailRep has flagged the email as suspicious.")
+    else:
+        colors.print_green("EmailRep has not flagged the email as suspicious.")
 
-
-def banner():
-    print(r"""
-                                 _____ 
-                               .' `.  \
-                         _____/     \  \
-                      .-'    J      _\--\_
-                     (       |   .-'      \
-                     |  _  .'`..'         |
-____     .----""----->-`-.'   |    .-'E"\ /                                             _ ___
-    `-._/          .'   `oo.__J  .<  _| .'------.        _____.------------------------' `   `-
-                  /          `-`<  `=/-'         `._.---'
-                 J       `.    `-) -'`.
-_________________E  `     |      `'|  |
-                / L  -.    L       F  |.--------------._____________
-               /  J     -. |      J   |\                            `--------------------._____
-              /    L    _  F      |AAA|J_
-             J     J      <-._____|  .'  \
-             F      L .' `--.  _  |.___   `-.
-            J ---   J   '      |  |    `.  .-\
-            F `---   \____.._     |_  .\ \'.`-|
-           J   .'.'.-'       `--._|`._\\)\\)///
-           |.'   .'_.---.       \ '    /  \\`-._
-           J    /        L      |-  -  \  //|   `-._
-            L  /         |     J     /  `"' |       `-._
-            J.'        / |     F  _.-|' '   F           `-._
-           __F-._______| |    J--'  J      J                `-._
-         .'.'  \\  |\  F |    |'    |      |                    `-.
-        /_/    |\\ | \/F |    F     |__.---<                       `-.
-       /       | \\| //| |__.J      |     J|         __              |
-      J        |  \\// F-'  )|      |     |       .-'  \             |
-      |        |   () /F    ||      (     J      /      \            |
-      |        |  //\\/F    ||      (    =`.     |_.--.  `.          |
-      |        | //|/\\( '== )\    /      ==`---. /  _(    \         |
-      J        |// |/ \|`  ==`.)   \__.________.'(  / | |\  `.      _|_.---'
-       \       //-'    /     ==\   `--' `------'  `.( `-'\`.  \   -' |
-        `.____(/'      \_       )                   \\_  _)`\_|-'    |
-                       `-`-----'                     `-.__.'     .- `| ' -.
-                                  .|>             .-._/-  \_.___._ ______.'
- VK         ()   ---._____      .' /         ____             __   .-.   `--'`.___
-          .'/                 _|. /______  .'.   `-.__.  __.-'  `-.   `-._.        `._
-         (__ \               /.`-'  _.---< `._____.-.< .'                   `._        \
-     -------------           `-----'             _.- 
-    ------------'
-    """)
+    apility_result = apility.issuspicious(args.email, args.verbose)
+    if apility_result is None:
+        colors.print_yellow("Apility does not have information the email at this time.")
+    elif apility_result:
+        colors.print_red("Apility has flagged the email as suspicious.")
+    else:
+        colors.print_green("Apility has not flagged the email as suspicious.")
 
 if __name__ == "__main__":
     main()
