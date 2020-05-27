@@ -12,7 +12,7 @@ requirements = [
 
 setup(
     name="fisherman",
-    version="1.0.0",
+    version="1.0.1",
     author="Edward",
     author_email="14011954+0xedward@users.noreply.github.com",
     license="MIT",
