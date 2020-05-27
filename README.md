@@ -2,6 +2,8 @@
 
 A python3 tool for looking up an email address's reputation on [EmailRep](https://emailrep.io) and [Apility](https://apility.io/) without the need for API keys.
 
+[![asciicast](https://asciinema.org/a/gxM8pX1R26sjePuXvtMrmRNEX.svg)](https://asciinema.org/a/gxM8pX1R26sjePuXvtMrmRNEX?loop=1&cols=95&rows=45)
+
 ## Installation
 `pip install fisherman`
 
